@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVEJ4 | Elite Player</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+            /* Cursor personalizado base */
+            cursor: crosshair;
+        }
+        .font-title { font-family: 'Syncopate', sans-serif; }
+        
+        /* Efecto Glassmorphism */
+        .glass {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Tarjetas con Brillo dinámico */
+        .card-gaming {
+            position: relative;
+            transition: all .5s cubic-bezier(.23,1,.32,1);
+            background: rgba(15, 15, 15, 0.5);
+            border: 1px solid rgba(255, 70, 85, 0.2);
+        }
+        .card-gaming:hover {
+            transform: translateY(-10px);
+            border-color: #ff4655;
+            box-shadow: 0 0 40px rgba(255, 70, 85, 0.15);
+        }
+
+        /* Degradados de Texto */
+        .text-gradient-red {
+            background: linear-gradient(to bottom, #ffffff 30%, #ff4655 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animación Marquesina */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: scroll 25s linear infinite;
+        }
+
+        .glow-button {
+            transition: .4s;
+            box-shadow: 0 0 20px rgba(255, 70, 85, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 40px rgba(255, 70, 85, 0.6);
+            transform: scale(1.02);
+        }
+
+        /* Nuevo: Animación Status Online */
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* Nuevo: Cursor Seguidor (Solo Desktop) */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff4655;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            display: none;
+        }
+        @media (min-width: 1024px) { #custom-cursor { display: block; } }
+    </style>
+</head>
+<body>
+
+    <div id="custom-cursor"></div>
+
+    <nav class="fixed w-full z-50 px-8 py-5 glass">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <span class="font-title font-bold text-xl tracking-tighter uppercase">OVEJ<span class="text-red-500">4</span></span>
+            <div class="flex gap-10 text-xs uppercase tracking-widest font-bold items-center">
+                <div class="flex items-center gap-2">
+                    <span class="status-pulse"></span>
+                    <span class="text-[10px] text-green-500 hidden sm:block">LFG</span>
+                </div>
+                <a href="#trayectoria" class="hover:text-red-500 transition-colors hidden md:block">Historia</a>
+                <a href="#teams" class="hover:text-red-500 transition-colors hidden md:block">Equipos</a>
+                <a href="#contact" class="text-red-500 border border-red-500/30 px-4 py-1 rounded-full hover:bg-red-500 hover:text-white transition-all">Fichar</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-center text-center relative px-6">
+        <div id="particles-js" class="absolute inset-0 -z-10"></div>
+        <div class="max-w-4xl">
+            <span class="text-red-500 font-bold tracking-[0.5em] text-xs uppercase mb-4 block">Professional Flex Player</span>
+            <h1 class="text-6xl md:text-9xl font-title font-black italic select-none leading-none text-gradient-red uppercase">
+                JETSHUA
+            </h1>
+            <p class="text-gray-500 mt-8 max-w-xl mx-auto uppercase tracking-widest text-[10px] leading-loose">
+                Desde 2024 redefiniendo el rol FLEX en la escena competitiva de México.
+            </p>
+        </div>
+    </section>
+
+    <section id="trayectoria" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="text-5xl font-title font-bold mb-8 uppercase italic">Trayectoria</h2>
+                <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+                    <p>Me llamo Jetshua, conocido como <span class="text-white font-bold">OVEJ4</span>. Mi carrera inició con determinación en el equipo <span class="text-red-500">TEMPO</span>, donde senté las bases de mi estilo de juego.</p>
+                    <p>Como jugador <span class="text-white border-b border-red-500">FLEX</span>, domino la adaptabilidad: puedo ser la punta de lanza en el rush o el soporte estratégico que el equipo necesita para cerrar la partida.</p>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-zinc-900/50 p-6 rounded-2xl border border-white/5">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-[10px] uppercase font-bold tracking-widest">Aim Accuracy</span>
+                        <span class="text-red-500 text-[10px] font-bold">95%</span>
+                    </div>
+                    <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-red-500 h-full w-[95%]"></div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900/50 p-6 rounded-2xl border border-white/5">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-[10px] uppercase font-bold tracking-widest">Game Sense</span>
+                        <span class="text-red-500 text-[10px] font-bold">92%</span>
+                    </div>
+                    <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-red-500 h-full w-[92%]"></div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900/50 p-6 rounded-2xl border border-white/5 text-center grid grid-cols-2 gap-4">
+                   <div>
+                        <h3 class="text-3xl font-title font-bold text-red-500">15</h3>
+                        <p class="text-[8px] uppercase tracking-widest mt-1 text-gray-500">Edad</p>
+                   </div>
+                   <div>
+                        <h3 class="text-3xl font-title font-bold text-white">MEX</h3>
+                        <p class="text-[8px] uppercase tracking-widest mt-1 text-gray-500">Región</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="text-5xl font-title font-bold mb-8 uppercase italic"><center>Equipos</center></h2>
+    <section id="teams" class="py-20 overflow-hidden border-y border-white/5 bg-zinc-950">
+        <div class="marquee-container">
+            <div class="marquee-content gap-20 items-center opacity-40">
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase">TEMPO</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase text-red-500">ESG</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase">INF</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase text-red-500">TASK FORCE</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase">ATL</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase">TEMPO</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase text-red-500">ESG</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase">INF</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase text-red-500">TASK FORCE</span>
+                <span class="text-5xl font-title font-bold tracking-tighter uppercase">ATL</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-title font-bold text-center mb-20 uppercase italic">Dominio Técnico</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-gaming p-10 rounded-[2.5rem]">
+                    <i data-lucide="zap" class="text-red-500 mb-6 w-10 h-10"></i>
+                    <h3 class="text-xl font-bold uppercase mb-4 italic">Versatilidad Flex</h3>
+                    <p class="text-gray-500 text-sm italic">Capacidad de rotar roles en tiempo real según la exigencia del mapa y la escuadra.</p>
+                </div>
+                <div class="card-gaming p-10 rounded-[2.5rem]">
+                    <i data-lucide="target" class="text-red-500 mb-6 w-10 h-10"></i>
+                    <h3 class="text-xl font-bold uppercase mb-4 italic">Precisión Pro</h3>
+                    <p class="text-gray-500 text-sm italic">Alto porcentaje de headshots y control de retroceso en situaciones críticas de 1vs4.</p>
+                </div>
+                <div class="card-gaming p-10 rounded-[2.5rem]">
+                    <i data-lucide="shield" class="text-red-500 mb-6 w-10 h-10"></i>
+                    <h3 class="text-xl font-bold uppercase mb-4 italic">IQ de Juego</h3>
+                    <p class="text-gray-500 text-sm italic">Lectura avanzada de zona y posicionamiento estratégico en finales de partida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 bg-zinc-950/50">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-6xl font-title font-bold mb-10 uppercase italic leading-none">¿Listo para ganar?</h2>
+            <p class="text-gray-500 mb-12 tracking-[0.3em] uppercase text-xs">Contacto directo para tryouts y contratos</p>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://wa.me/529516152869" class="glow-button bg-red-600 text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest flex items-center gap-3">
+                    <i data-lucide="phone"></i> WhatsApp Directo
+                </a>
+                <a href="https://www.tiktok.com/@ovejaa" class="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-10 py-5 rounded-2xl font-bold uppercase tracking-widest flex items-center gap-3 transition-all">
+                    <i data-lucide="video"></i> TikTok Clips
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-zinc-600 border-t border-white/5">
+        <p class="text-[10px] tracking-[0.5em] uppercase font-bold px-4">OVEJ4 // PROFESSIONAL PLAYER // 2026</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Cursor Seguidor
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Partículas de Fondo
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 50 },
+                color: { value: "#ff4655" },
+                opacity: { value: 0.3 },
+                size: { value: 1.5 },
+                line_linked: { enable: true, distance: 150, color: "#ff4655", opacity: 0.1, width: 1 },
+                move: { speed: 1 }
+            }
+        });
+    </script>
+</body>
+</html>
